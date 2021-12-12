@@ -30,11 +30,11 @@ namespace StudentEnrollment.API.Controllers
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 204)]
         [ProducesResponseType(typeof(Envelope), 400)]
-        public IActionResult AddCourse([FromBody] AddCourseDto addCourseDto)
+        public IActionResult AddCourse([FromBody] SaveCourseDto saveCourseDto)
         {
             if (ModelState.IsValid)
             {
-                AddCourse command = new AddCourse(addCourseDto);
+                AddCourse command = new AddCourse(saveCourseDto);
                 try
                 {
                     var result = _messages.Dispatch(command);
@@ -163,11 +163,11 @@ namespace StudentEnrollment.API.Controllers
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 204)]
         [ProducesResponseType(typeof(Envelope), 400)]
-        public IActionResult UpdateCourse(Guid id, [FromBody] UpdateCourseDto updateCourseDto)
+        public IActionResult UpdateCourse(Guid id, [FromBody] SaveCourseDto saveCourseDto)
         {
             if (ModelState.IsValid)
             {
-                UpdateCourse command = new UpdateCourse(updateCourseDto,id);
+                UpdateCourse command = new UpdateCourse(saveCourseDto,id);
                 try
                 {
                     var result = _messages.Dispatch(command);
