@@ -20,6 +20,9 @@ using StudentEnrollment.Entities;
 using StudentEnrollment.Store;
 using Newtonsoft.Json;
 using StudentEnrollment.Core.Services;
+using Microsoft.Extensions.Options;
+using System.Reflection;
+using System.IO;
 
 namespace StudentEnrollment.Api
 {
@@ -44,10 +47,13 @@ namespace StudentEnrollment.Api
             {
                 options.SerializerSettings.Formatting = Formatting.Indented;
             });
-
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("Version", new OpenApiInfo { Title = "StudentEnrollment Apis", Version = "v1" });
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
 
 

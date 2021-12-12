@@ -22,6 +22,22 @@ namespace StudentEnrollment.API.Controllers
             _messages = messages;
         }
 
+        /// <summary>
+        /// Creates a Department.
+        /// </summary>
+        /// <returns>A newly created TodoItem</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///  
+        ///     POST /Add Deparment  
+        ///     {
+        ///         "title": "string"
+        ///     }
+        ///
+        ///</remarks>
+        ///<response code="201">Returns the newly created item</response>
+        ///<response code="400">If the item is null</response>
         [HttpPost("student-enrollment/api/departments/add")]
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 400)]

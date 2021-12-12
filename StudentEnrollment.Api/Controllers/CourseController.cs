@@ -26,6 +26,33 @@ namespace StudentEnrollment.API.Controllers
             _messages = messages;
         }
 
+        /// <summary>
+        /// Creates a Course.
+        /// </summary>
+        /// <returns>A newly created TodoItem</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///  
+        ///     POST /Add Course  
+        ///     {
+        ///        "name": "MAT 00",
+        ///        "title": "string",
+        ///        "abbreviation": "MAT",
+        ///        "section": "01",
+        ///        "courseNumber": "string",
+        ///        "instructorName": "User",
+        ///        "department": "Mathematics",
+        ///        "credits": 0,
+        ///        "startTime": "9:00am",
+        ///        "endTime": "9:00am",
+        ///        "remainingSlots": 0,
+        ///        "capacity": 0
+        ///     }
+        ///
+        ///</remarks>
+        ///<response code="201">Returns the newly created item</response>
+        ///<response code="400">If the item is null</response>
         [HttpPost("student-enrollment/api/courses/add")]
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 204)]
@@ -86,7 +113,7 @@ namespace StudentEnrollment.API.Controllers
             return BadRequest();
         }
 
-        /// <summary
+        /// <summary>
         /// Get Upload Logs for Admin
         /// </summary>
         /// <response code="400">Bad request</response> 
@@ -121,7 +148,7 @@ namespace StudentEnrollment.API.Controllers
             return BadRequest();
         }
 
-        /// <summary
+        /// <summary>
         /// Get Upload Logs for Admin
         /// </summary>
         /// <response code="400">Bad request</response> 
@@ -219,7 +246,7 @@ namespace StudentEnrollment.API.Controllers
 
 
         
-        /// <summary
+        /// <summary>
         /// Get all Courses
         /// </summary>
         /// <response code="400">Bad request</response> 
@@ -254,7 +281,7 @@ namespace StudentEnrollment.API.Controllers
             return BadRequest();
         }
 
-        /// <summary
+        /// <summary>
         /// Get Course by Name and Section
         /// </summary>
         /// <response code="400">Bad request</response> 
@@ -290,7 +317,7 @@ namespace StudentEnrollment.API.Controllers
         }
 
 
-        /// <summary
+        /// <summary>
         /// Get Course by Id
         /// </summary>
         /// <response code="400">Bad request</response> 
@@ -327,7 +354,7 @@ namespace StudentEnrollment.API.Controllers
 
 
 
-        /// <summary
+        /// <summary>
         /// Get all Courses by name
         /// </summary>
         /// <response code="400">Bad request</response> 
@@ -362,7 +389,7 @@ namespace StudentEnrollment.API.Controllers
             return BadRequest();
         }
 
-        /// <summary
+        /// <summary>
         /// Get all Courses by Department
         /// </summary>
         /// <response code="400">Bad request</response> 
