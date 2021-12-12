@@ -11,6 +11,7 @@ using StudentEnrollment.Core.Queries;
 using StudentEnrollment.Core.Courses.Commands;
 using StudentEnrollment.Core.Admin.Commands.Queries;
 using StudentEnrollment.Core.Admin.Queries;
+using Microsoft.AspNetCore.Http;
 
 namespace StudentEnrollment.API.Controllers
 {
@@ -60,11 +61,11 @@ namespace StudentEnrollment.API.Controllers
         [ProducesResponseType(typeof(Envelope), 204)]
         [ProducesResponseType(typeof(Envelope), 400)]
         [ApiExplorerSettings(IgnoreApi = true)]
-        public IActionResult UploadCourses(List<UploadCourseDto> courseDtos, string userid)
+        public IActionResult UploadCourses(List<UploadCourseDto> UploadCourseDtos, string userid)
         {
             if (ModelState.IsValid)
             {
-                AddUploadedCourses command = new AddUploadedCourses(courseDtos,userid);
+                UploadCourseCommand command = new UploadCourseCommand(UploadCourseDtos,userid);
                 try
                 {
                     var result = _messages.Dispatch(command);

@@ -19,6 +19,7 @@ using StudentEnrollment.EFCore;
 using StudentEnrollment.Entities;
 using StudentEnrollment.Store;
 using Newtonsoft.Json;
+using StudentEnrollment.Core.Services;
 
 namespace StudentEnrollment.Api
 {
@@ -65,6 +66,10 @@ namespace StudentEnrollment.Api
             services.AddDbContext<ApplicationDbContext>(options => { options.UseSqlServer(Configuration.GetConnectionString("localhost")); });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<IUploadService, UploadService>();
+
+
 
             services.AddScoped<Message>();
 
