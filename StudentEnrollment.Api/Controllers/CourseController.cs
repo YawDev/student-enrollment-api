@@ -83,16 +83,16 @@ namespace StudentEnrollment.API.Controllers
         }
 
 
-        [HttpPost("student-enrollment/api/upload/courses/{userid}/{filePath}")]
+        [HttpPost("student-enrollment/api/upload/courses/{userid}")]
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 204)]
         [ProducesResponseType(typeof(Envelope), 400)]
         [ApiExplorerSettings(IgnoreApi = true)]
-        public IActionResult UploadCourses(List<UploadCourseDto> UploadCourseDtos, string userid, string filePath)
+        public IActionResult UploadCourses(FileDto fileDto, string userid)
         {
             if (ModelState.IsValid)
             {
-                UploadCourseCommand command = new UploadCourseCommand(UploadCourseDtos, userid, filePath);
+                UploadCourseCommand command = new UploadCourseCommand(fileDto, userid);
                 try
                 {
                     var result = _messages.Dispatch(command);
