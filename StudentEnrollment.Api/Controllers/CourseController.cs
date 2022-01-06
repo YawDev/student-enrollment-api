@@ -83,16 +83,16 @@ namespace StudentEnrollment.API.Controllers
         }
 
 
-        [HttpPost("student-enrollment/api/upload/courses/{userid}")]
+        [HttpPost("student-enrollment/api/upload/courses/{userid}/{filePath}")]
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 204)]
         [ProducesResponseType(typeof(Envelope), 400)]
         [ApiExplorerSettings(IgnoreApi = true)]
-        public IActionResult UploadCourses(List<UploadCourseDto> UploadCourseDtos, string userid)
+        public IActionResult UploadCourses(List<UploadCourseDto> UploadCourseDtos, string userid, string filePath)
         {
             if (ModelState.IsValid)
             {
-                UploadCourseCommand command = new UploadCourseCommand(UploadCourseDtos,userid);
+                UploadCourseCommand command = new UploadCourseCommand(UploadCourseDtos, userid, filePath);
                 try
                 {
                     var result = _messages.Dispatch(command);
@@ -129,7 +129,7 @@ namespace StudentEnrollment.API.Controllers
             {
                 GetUploadLogs query = new GetUploadLogs(userid);
                 try
-                {                    
+                {
                     var result = _messages.Dispatch(query);
                     return Ok(result);
                 }
@@ -164,7 +164,7 @@ namespace StudentEnrollment.API.Controllers
             {
                 GetLogErrors query = new GetLogErrors(id);
                 try
-                {                    
+                {
                     var result = _messages.Dispatch(query);
                     return Ok(result);
                 }
@@ -184,7 +184,7 @@ namespace StudentEnrollment.API.Controllers
         }
 
 
-        
+
 
         [HttpPut("student-enrollment/api/courses/update/{id}")]
         [ProducesResponseType(typeof(Envelope), 201)]
@@ -194,7 +194,7 @@ namespace StudentEnrollment.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                UpdateCourse command = new UpdateCourse(saveCourseDto,id);
+                UpdateCourse command = new UpdateCourse(saveCourseDto, id);
                 try
                 {
                     var result = _messages.Dispatch(command);
@@ -245,7 +245,7 @@ namespace StudentEnrollment.API.Controllers
         }
 
 
-        
+
         /// <summary>
         /// Get all Courses
         /// </summary>
@@ -262,7 +262,7 @@ namespace StudentEnrollment.API.Controllers
             {
                 GetCourses query = new GetCourses();
                 try
-                {                    
+                {
                     var result = _messages.Dispatch(query);
                     return Ok(result);
                 }
@@ -295,7 +295,7 @@ namespace StudentEnrollment.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                GetCourseByNameAndSection query = new GetCourseByNameAndSection(name,section);
+                GetCourseByNameAndSection query = new GetCourseByNameAndSection(name, section);
                 try
                 {
                     var result = _messages.Dispatch(query);
