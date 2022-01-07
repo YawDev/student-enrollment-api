@@ -171,7 +171,7 @@ namespace StudentEnrollment.API.Controllers
             return BadRequest();
         }
 
-         /// <summary
+        /// <summary
         /// Get user
         /// </summary>
         /// <response code="400">Bad request</response> 
