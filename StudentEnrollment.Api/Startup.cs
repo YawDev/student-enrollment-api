@@ -14,15 +14,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using StudentEnrollment.Api.Utils;
-using StudentEnrollment.Core;
-using StudentEnrollment.EFCore;
+
 using StudentEnrollment.Entities;
 using StudentEnrollment.Store;
 using Newtonsoft.Json;
-using StudentEnrollment.Core.Services;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 using System.IO;
+using StudentEnrollment.EFCore;
+using StudentEnrollment.Core.Services;
+using StudentEnrollment.Core;
 
 namespace StudentEnrollment.Api
 {
@@ -38,16 +39,16 @@ namespace StudentEnrollment.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("localhost")));
             services.AddIdentity<RequestUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
-          services.AddControllers().AddNewtonsoftJson(options =>
-            {
-                options.SerializerSettings.Formatting = Formatting.Indented;
-            });
-            
+            services.AddControllers().AddNewtonsoftJson(options =>
+              {
+                  options.SerializerSettings.Formatting = Formatting.Indented;
+              });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("Version", new OpenApiInfo { Title = "StudentEnrollment Apis", Version = "v1" });
@@ -74,6 +75,8 @@ namespace StudentEnrollment.Api
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<IUploadService, UploadService>();
+            services.AddScoped<IEmailService, EmailService>();
+
 
 
 
