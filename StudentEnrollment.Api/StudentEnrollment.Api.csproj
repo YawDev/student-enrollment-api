@@ -7,7 +7,6 @@
   <GenerateDocumentationFile>true</GenerateDocumentationFile>
   <NoWarn>$(NoWarn);1591</NoWarn>
 </PropertyGroup>
-<config> <add key="signatureValidationMode" value="accept" />
 <ItemGroup>
 <PackageReference Include="AutoMapper" Version="10.1.1" />
 <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.2" />
