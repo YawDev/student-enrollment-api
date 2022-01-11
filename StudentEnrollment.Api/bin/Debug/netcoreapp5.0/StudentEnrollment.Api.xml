@@ -4,6 +4,8 @@
         <name>StudentEnrollment.Api</name>
     </assembly>
     <members>
+        <!-- Badly formed XML comment ignored for member "M:StudentEnrollment.Api.Controllers.AdminController.GetDetails(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:StudentEnrollment.Api.Controllers.EnrollmentsController.GetEnrollment(System.Guid)" -->
         <member name="M:StudentEnrollment.API.Controllers.CourseController.AddCourse(StudentEnrollment.Core.Dtos.SaveCourseDto)">
              <summary>
              Creates a Course.
@@ -120,6 +122,5 @@
         <!-- Badly formed XML comment ignored for member "M:StudentEnrollment.API.Controllers.StudentController.GetLastSyncLog(System.Guid)" -->
         <!-- Badly formed XML comment ignored for member "M:StudentEnrollment.API.Controllers.UsersController.ConfirmUser(System.String)" -->
         <!-- Badly formed XML comment ignored for member "M:StudentEnrollment.API.Controllers.UsersController.GetAccountDetails(System.String)" -->
-        <!-- Badly formed XML comment ignored for member "M:StudentEnrollment.Api.Controllers.EnrollmentsController.GetEnrollment(System.Guid)" -->
     </members>
 </doc>

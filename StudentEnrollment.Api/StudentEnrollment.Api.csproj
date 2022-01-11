@@ -7,14 +7,13 @@
   <GenerateDocumentationFile>true</GenerateDocumentationFile>
   <NoWarn>$(NoWarn);1591</NoWarn>
 </PropertyGroup>
-<config> <add key="signatureValidationMode" value="accept" />
 <ItemGroup>
 <PackageReference Include="AutoMapper" Version="10.1.1" />
 <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.2" />
 <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.13" />
 <PackageReference Include="CsvHelper" Version="27.2.1" />
-<PackageReference Include="MailKit" Version="3.0.0" />
+    <PackageReference Include="NETCore.MailKit" Version="2.0.3" />      
 <ProjectReference Include="..\..\student-enrollment-store\StudentEnrollment.Store\StudentEnrollment.Store.csproj">
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
       <IncludeAssets>StudentEnrollment.Store.dll</IncludeAssets>
