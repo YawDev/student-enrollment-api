@@ -157,7 +157,7 @@ namespace StudentEnrollment.API.Controllers
         /// <response code="401">Unknown Identity</response>
         /// <response code="403">Unauthorized</response>
 
-        [HttpGet("student-enrollment/api/course-search")]
+        [HttpPost("student-enrollment/api/course-search")]
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 400)]
         public IActionResult GetCompleteSearch([FromBody] SearchCoursesDto searchCoursesDto)
