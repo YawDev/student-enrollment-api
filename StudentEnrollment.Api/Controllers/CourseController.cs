@@ -12,6 +12,7 @@ using StudentEnrollment.Core.Courses.Commands;
 using StudentEnrollment.Core.Admin.Commands.Queries;
 using StudentEnrollment.Core.Admin.Queries;
 using Microsoft.AspNetCore.Http;
+using StudentEnrollment.Core.Courses.Queries;
 
 namespace StudentEnrollment.API.Controllers
 {
@@ -128,6 +129,42 @@ namespace StudentEnrollment.API.Controllers
             if (ModelState.IsValid)
             {
                 GetUploadLogs query = new GetUploadLogs(userid);
+                try
+                {
+                    var result = _messages.Dispatch(query);
+                    return Ok(result);
+                }
+                catch (DomainException ex)
+                {
+                    _logger.LogError(ex.Message);
+                    return Error(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogCritical(ex.Message);
+                    return StatusCode(500);
+                }
+
+            }
+            return BadRequest();
+        }
+
+
+        /// <summary>
+        /// Get Results for Course Search
+        /// </summary>
+        /// <response code="400">Bad request</response> 
+        /// <response code="401">Unknown Identity</response>
+        /// <response code="403">Unauthorized</response>
+
+        [HttpGet("student-enrollment/api/course-search")]
+        [ProducesResponseType(typeof(Envelope), 201)]
+        [ProducesResponseType(typeof(Envelope), 400)]
+        public IActionResult GetCompleteSearch([FromBody] SearchCoursesDto searchCoursesDto)
+        {
+            if (ModelState.IsValid)
+            {
+                SearchCourses query = new SearchCourses(searchCoursesDto);
                 try
                 {
                     var result = _messages.Dispatch(query);
