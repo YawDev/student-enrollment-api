@@ -220,6 +220,77 @@ namespace StudentEnrollment.API.Controllers
             return BadRequest();
         }
 
+                /// <summary>
+        /// Get Log By Id
+        /// </summary>
+        /// <response code="400">Bad request</response> 
+        /// <response code="401">Unknown Identity</response>
+        /// <response code="403">Unauthorized</response>
+
+        [HttpGet("student-enrollment/api/upload/log/{id}")]
+        [ProducesResponseType(typeof(Envelope), 201)]
+        [ProducesResponseType(typeof(Envelope), 400)]
+        public IActionResult GetLogById(Guid Id)
+        {
+            if (ModelState.IsValid)
+            {
+                GetUploadLogById query = new GetUploadLogById(Id);
+                try
+                {
+                    var result = _messages.Dispatch(query);
+                    return Ok(result);
+                }
+                catch (DomainException ex)
+                {
+                    _logger.LogError(ex.Message);
+                    return Error(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogCritical(ex.Message);
+                    return StatusCode(500);
+                }
+
+            }
+            return BadRequest();
+        }
+
+
+        /// <summary>
+        /// Delete Course Upload Logs
+        /// </summary>
+        /// <response code="400">Bad request</response> 
+        /// <response code="401">Unknown Identity</response>
+        /// <response code="403">Unauthorized</response>
+
+        [HttpDelete("student-enrollment/api/logs/delete/{id}")]
+        [ProducesResponseType(typeof(Envelope), 201)]
+        [ProducesResponseType(typeof(Envelope), 400)]
+        public IActionResult DeleteLog(Guid id)
+        {
+            if (ModelState.IsValid)
+            {
+                DeleteUploadLog command = new DeleteUploadLog(id);
+                try
+                {
+                    var result = _messages.Dispatch(command);
+                    return Ok(result);
+                }
+                catch (DomainException ex)
+                {
+                    _logger.LogError(ex.Message);
+                    return Error(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogCritical(ex.Message);
+                    return StatusCode(500);
+                }
+
+            }
+            return BadRequest();
+        }
+
 
 
 
