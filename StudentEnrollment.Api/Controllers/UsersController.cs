@@ -25,11 +25,11 @@ namespace StudentEnrollment.API.Controllers
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 400)]
         [ApiExplorerSettings(IgnoreApi = true)]
-        public IActionResult ValidateLogin([FromBody] LoginDto loginDto)
+        public IActionResult ValidateLogin([FromBody] IdentityAuthDto authDto)
         {
             if (ModelState.IsValid)
             {
-                ValidateLogin command = new ValidateLogin(loginDto);
+                ValidateLogin command = new ValidateLogin(authDto);
                 try
                 {
                     var result = _messages.Dispatch(command);
