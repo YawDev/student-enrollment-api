@@ -53,7 +53,7 @@ namespace StudentEnrollment.API.Controllers
         [HttpPost("student-enrollment/api/instructors/register")]
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 400)]
-        public IActionResult InstructorRegistration([FromBody] AddInstructorDto AddInstructorDto)
+        public IActionResult InstructorRegistration([FromBody] InstructorSignUpDto AddInstructorDto)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace StudentEnrollment.API.Controllers
         [HttpPost("student-enrollment/api/students/register")]
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 400)]
-        public IActionResult StudentRegistration([FromBody] AddStudentDto addStudentDto)
+        public IActionResult StudentRegistration([FromBody] StudentSignUpDto addStudentDto)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace StudentEnrollment.API.Controllers
         [HttpPost("student-enrollment/api/admin/register")]
         [ProducesResponseType(typeof(Envelope), 201)]
         [ProducesResponseType(typeof(Envelope), 400)]
-        public IActionResult AdminRegistration([FromBody] AddAdminDto addAdminDto)
+        public IActionResult AdminRegistration([FromBody] AdminSignUpDto addAdminDto)
         {
             if (ModelState.IsValid)
             {
