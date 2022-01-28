@@ -23,34 +23,7 @@ namespace StudentEnrollment.API.Controllers
             _messages = messages;
         }
 
-        [HttpPost("student-enrollment/api/instructors/add")]
-        [ProducesResponseType(typeof(Envelope), 201)]
-        [ProducesResponseType(typeof(Envelope), 204)]
-        [ProducesResponseType(typeof(Envelope), 400)]
-        public IActionResult AddInstructor([FromBody] AddInstructorDto addInstructorDto)
-        {
-            if (ModelState.IsValid)
-            {
-                AddInstructor command = new AddInstructor(addInstructorDto);
-                try
-                {
-                    var result = _messages.Dispatch(command);
-                    return FromResult(result);
-                }
-                catch (DomainException ex)
-                {
-                    _logger.LogError(ex.Message);
-                    return Error(ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogCritical(ex.Message);
-                    return StatusCode(500);
-                }
 
-            }
-            return BadRequest();
-        }
 
         /// <summary
         /// Get all Instructors

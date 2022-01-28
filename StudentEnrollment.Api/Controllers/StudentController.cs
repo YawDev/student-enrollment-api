@@ -24,33 +24,7 @@ namespace StudentEnrollment.API.Controllers
             _messages = messages;
         }
 
-        [HttpPost("student-enrollment/api/students/add")]
-        [ProducesResponseType(typeof(Envelope), 201)]
-        [ProducesResponseType(typeof(Envelope), 400)]
-        public IActionResult AddStudent([FromBody] AddStudentDto studentDto)
-        {
-            if (ModelState.IsValid)
-            {
-                AddStudent command = new AddStudent(studentDto);
-                try
-                {
-                    var result = _messages.Dispatch(command);
-                    return FromResult(result);
-                }
-                catch (DomainException ex)
-                {
-                    _logger.LogError(ex.Message);
-                    return Error(ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogCritical(ex.Message);
-                    return StatusCode(500);
-                }
-
-            }
-            return BadRequest();
-        }
+     
 
         /// <summary
         /// Get all Students
